@@ -5,6 +5,12 @@ import { colorPalette } from './colorPalette'
 // https://meyerweb.com/eric/tools/css/reset/
 export default css`
   ${colorPalette}
+
+  :root {
+    --dimmed-zindex: 10;
+    --alert-zindex: 11;
+  }
+
   html,
   body,
   div,

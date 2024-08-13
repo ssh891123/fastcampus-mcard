@@ -16,6 +16,7 @@ interface TextProp {
 const Text = styles.span<TextProp>(
   ({ color = 'black', display, textAlign, fontWeight, bold }) => ({
     color: colors[color], // var(--red)
+    display,
     textAlign,
     fontWeight: bold ? 'bold' : fontWeight,
   }),
