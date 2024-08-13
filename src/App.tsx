@@ -5,9 +5,11 @@ import Text from '@shared/Text'
 import Button from '@shared/Button'
 import Input from '@shared/Input'
 import TextField from '@shared/TextField'
-import Alert from '@shared/Alert'
+import { useAlertContext } from '@contexts/AlertContext'
 
 function App() {
+  const { open } = useAlertContext()
+
   return (
     <div>
       <Text typography="t1" display="block" color="red">
@@ -37,12 +39,17 @@ function App() {
       <TextField label="아이디" />
       <TextField label="패스워드" hasError={true} />
 
-      <Alert
-        open={true}
-        description="안녕하세요"
-        title="알랏이 떳습니다"
-        onButtonClick={() => {}}
-      />
+      <Button
+        onClick={() => {
+          open({
+            title: '카드 신청 완료',
+            description: '카드 신청이 완료되었습니다.',
+            onButtonClick: () => {},
+          })
+        }}
+      >
+        AlertOpen
+      </Button>
     </div>
   )
 }
