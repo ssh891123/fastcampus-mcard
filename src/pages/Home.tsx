@@ -1,11 +1,15 @@
-import getCards from '@/remote/card'
+import getCards from '@remote/card'
+import getAdBanners from '@remote/adBanner'
 import Top from '@shared/Top'
 import { useEffect } from 'react'
 
 function HomePage() {
   useEffect(() => {
     getCards().then((response) => {
-      console.log('response', response)
+      console.log('response-card', response)
+    })
+    getAdBanners().then((response) => {
+      console.log('response-adbanner', response)
     })
   }, [])
 
