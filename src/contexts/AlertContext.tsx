@@ -43,7 +43,6 @@ export function AlertContextProvider({
   }, [])
 
   const open = useCallback(({ onButtonClick, ...options }: AlertOptions) => {
-    console.log('context open')
     setAlertState({
       ...options,
       // alert이 닫히면서 실행됨: opetion으로 전달받은 onButtonClick 함수 실행, close 클로저 함수도 실행
@@ -54,10 +53,6 @@ export function AlertContextProvider({
       open: true,
     })
   }, [])
-
-  useEffect(() => {
-    console.log('useEffect', alertState)
-  })
 
   const values = useMemo(() => ({ open }), [open])
 
