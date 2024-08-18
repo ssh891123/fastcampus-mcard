@@ -1,6 +1,11 @@
-// data를 fire store에 저장하기 위한 test 페이지
+import CardListAddButton from '@components/test/CardListAddButton'
+
 function TestPage() {
-  return <div>TestPage</div>
+  return (
+    <div>
+      <CardListAddButton />
+    </div>
+  )
 }
 
 export default TestPage
