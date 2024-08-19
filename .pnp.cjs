@@ -54,6 +54,7 @@ const RAW_RUNTIME_STATE =
           ["react-query", "virtual:f1d4e2148166947cc3f922a3b50a12cb6438bc3e5c0aabe3e3fd7fb8e2c9bf04705dec61e3462a331965e3bdfe4c8f80f08bac4c3e54ccfb373056b0d3dfbf3d#npm:3.39.3"],\
           ["react-router-dom", "virtual:f1d4e2148166947cc3f922a3b50a12cb6438bc3e5c0aabe3e3fd7fb8e2c9bf04705dec61e3462a331965e3bdfe4c8f80f08bac4c3e54ccfb373056b0d3dfbf3d#npm:6.26.1"],\
           ["react-scripts", "virtual:f1d4e2148166947cc3f922a3b50a12cb6438bc3e5c0aabe3e3fd7fb8e2c9bf04705dec61e3462a331965e3bdfe4c8f80f08bac4c3e54ccfb373056b0d3dfbf3d#npm:5.0.1"],\
+          ["swiper", "npm:9.4.1"],\
           ["typescript", "patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587"],\
           ["web-vitals", "npm:2.1.4"]\
         ],\
@@ -14957,6 +14958,7 @@ const RAW_RUNTIME_STATE =
           ["react-query", "virtual:f1d4e2148166947cc3f922a3b50a12cb6438bc3e5c0aabe3e3fd7fb8e2c9bf04705dec61e3462a331965e3bdfe4c8f80f08bac4c3e54ccfb373056b0d3dfbf3d#npm:3.39.3"],\
           ["react-router-dom", "virtual:f1d4e2148166947cc3f922a3b50a12cb6438bc3e5c0aabe3e3fd7fb8e2c9bf04705dec61e3462a331965e3bdfe4c8f80f08bac4c3e54ccfb373056b0d3dfbf3d#npm:6.26.1"],\
           ["react-scripts", "virtual:f1d4e2148166947cc3f922a3b50a12cb6438bc3e5c0aabe3e3fd7fb8e2c9bf04705dec61e3462a331965e3bdfe4c8f80f08bac4c3e54ccfb373056b0d3dfbf3d#npm:5.0.1"],\
+          ["swiper", "npm:9.4.1"],\
           ["typescript", "patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587"],\
           ["web-vitals", "npm:2.1.4"]\
         ],\
@@ -18378,6 +18380,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["ssr-window", [\
+      ["npm:4.0.2", {\
+        "packageLocation": "../../../AppData/Local/Yarn/Berry/cache/ssr-window-npm-4.0.2-01f9c0151e-10c0.zip/node_modules/ssr-window/",\
+        "packageDependencies": [\
+          ["ssr-window", "npm:4.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["ssri", [\
       ["npm:10.0.6", {\
         "packageLocation": "../../../AppData/Local/Yarn/Berry/cache/ssri-npm-10.0.6-6b8eaec5ce-10c0.zip/node_modules/ssri/",\
@@ -18842,6 +18853,16 @@ const RAW_RUNTIME_STATE =
           ["csso", "npm:4.2.0"],\
           ["picocolors", "npm:1.0.1"],\
           ["stable", "npm:0.1.8"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["swiper", [\
+      ["npm:9.4.1", {\
+        "packageLocation": "../../../AppData/Local/Yarn/Berry/cache/swiper-npm-9.4.1-38d46d35a3-10c0.zip/node_modules/swiper/",\
+        "packageDependencies": [\
+          ["swiper", "npm:9.4.1"],\
+          ["ssr-window", "npm:4.0.2"]\
         ],\
         "linkType": "HARD"\
       }]\
