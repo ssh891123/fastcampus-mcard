@@ -1,28 +1,65 @@
 import ListRow from '@shared/ListRow'
-import { useQuery } from 'react-query'
+import { useInfiniteQuery } from 'react-query'
 import getCards from '@remote/card'
+import { flatten } from 'lodash'
+import Button from '@shared/Button'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import { useCallback } from 'react'
 
 function CardList() {
-  const { data } = useQuery('cards', () => getCards())
+  const {
+    data,
+    hasNextPage = false, //값이 없다면 false로 판단
+    fetchNextPage,
+    isFetching,
+  } = useInfiniteQuery(
+    ['cards'],
+    // getNextPageParam의 return이 pageParam으로 들어옴
+    ({ pageParam }) => {
+      return getCards(pageParam)
+    },
+    {
+      // getCards의 return data가 snapshot으로 들어옴
+      getNextPageParam: (snapshot) => {
+        return snapshot.lastVisible
+      },
+    },
+  )
+
+  const loadMore = useCallback(() => {
+    if (hasNextPage === false || isFetching === true) {
+      return
+    }
+    fetchNextPage()
+  }, [fetchNextPage, hasNextPage, isFetching])
+
   if (data == null) {
     return null
   }
+  const cards = flatten(data.pages.map(({ items }) => items))
 
   return (
-    <ul>
-      {data.map((card, idx) => {
-        return (
-          <ListRow
-            key={card.id}
-            contents={
-              <ListRow.Texts title={`${idx + 1}위`} subTitle={card.name} />
-            }
-            right={card.payback != null ? <div>{card.payback}</div> : null}
-            withArrow={true}
-          ></ListRow>
-        )
-      })}
-    </ul>
+    <div>
+      <InfiniteScroll
+        dataLength={cards.length}
+        hasMore={hasNextPage}
+        loader={<></>}
+        next={loadMore}
+      >
+        {cards.map((card, idx) => {
+          return (
+            <ListRow
+              key={card.id}
+              contents={
+                <ListRow.Texts title={`${idx + 1}위`} subTitle={card.name} />
+              }
+              right={card.payback != null ? <div>{card.payback}</div> : null}
+              withArrow={true}
+            ></ListRow>
+          )
+        })}
+      </InfiniteScroll>
+    </div>
   )
 }
 
