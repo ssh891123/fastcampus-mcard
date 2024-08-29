@@ -5,6 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import { useCallback } from 'react'
 import ListRow from '@shared/ListRow'
 import Badge from '@shared/Badge'
+import { useNavigate } from 'react-router-dom'
 
 function CardList() {
   const {
@@ -33,6 +34,8 @@ function CardList() {
     fetchNextPage()
   }, [fetchNextPage, hasNextPage, isFetching])
 
+  const navigate = useNavigate()
+
   if (data == null) {
     return null
   }
@@ -59,6 +62,9 @@ function CardList() {
                   card.payback != null ? <Badge label={card.payback} /> : null
                 }
                 withArrow={true}
+                onClick={() => {
+                  navigate(`card/${card.id}`)
+                }}
               ></ListRow>
             )
           })}
