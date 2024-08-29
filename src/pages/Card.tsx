@@ -1,10 +1,13 @@
 import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
+import { css } from '@emotion/react'
 
 import Top from '@shared/Top'
 import { getCard } from '@remote/card'
 import ListRow from '@shared/ListRow'
 import FixedBottomButton from '@shared/FixedBottomButton'
+import Flex from '@shared/Flex'
+import Text from '@shared/Text'
 
 function CardPage() {
   const { id = '' } = useParams()
@@ -20,7 +23,6 @@ function CardPage() {
   const { name, corpName, promotion, tags, benefit } = data
   let subTitle =
     promotion != null ? removeHtml(promotion.title) : tags.join(' ,')
-  console.log(subTitle)
 
   return (
     <>
@@ -38,6 +40,15 @@ function CardPage() {
           )
         })}
       </ul>
+
+      {promotion != null ? (
+        <Flex direction="column" css={termContainerStyles}>
+          <Text bold={true} typography="t4">
+            유의사항
+          </Text>
+          <Text typography="t7">{removeHtml(promotion.terms)}</Text>
+        </Flex>
+      ) : null}
       <FixedBottomButton label="신청하기" onClick={() => {}} />
     </>
   )
@@ -89,5 +100,10 @@ function IconCheck() {
     </svg>
   )
 }
+
+const termContainerStyles = css`
+  margin-top: 80px;
+  padding: 0 24px 80px 24px;
+`
 
 export default CardPage
