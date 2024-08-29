@@ -47,20 +47,22 @@ function CardList() {
         next={loadMore}
         scrollThreshold="100px"
       >
-        {cards.map((card, idx) => {
-          return (
-            <ListRow
-              key={card.id}
-              contents={
-                <ListRow.Texts title={`${idx + 1}위`} subTitle={card.name} />
-              }
-              right={
-                card.payback != null ? <Badge label={card.payback} /> : null
-              }
-              withArrow={true}
-            ></ListRow>
-          )
-        })}
+        <ul>
+          {cards.map((card, idx) => {
+            return (
+              <ListRow
+                key={card.id}
+                contents={
+                  <ListRow.Texts title={`${idx + 1}위`} subTitle={card.name} />
+                }
+                right={
+                  card.payback != null ? <Badge label={card.payback} /> : null
+                }
+                withArrow={true}
+              ></ListRow>
+            )
+          })}
+        </ul>
       </InfiniteScroll>
     </div>
   )
