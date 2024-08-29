@@ -45,6 +45,7 @@ function CardList() {
         hasMore={hasNextPage}
         loader={<></>}
         next={loadMore}
+        scrollThreshold="100px"
       >
         {cards.map((card, idx) => {
           return (
