@@ -9,7 +9,7 @@ import Spacing from '@shared/Spacing'
 import TextField from '@shared/TextField'
 import { FormValues } from '@models/signup'
 
-function Form() {
+function Form({ onSubmit }: { onSubmit: (formValues: FormValues) => void }) {
   const [formValues, setFormValues] = useState<FormValues>({
     email: '',
     password: '',
@@ -87,7 +87,9 @@ function Form() {
 
       <FixedBottomButton
         label="회원가입"
-        onClick={() => {}}
+        onClick={() => {
+          onSubmit(formValues)
+        }}
         disabled={제출가능한상태 === false}
       />
     </Flex>
