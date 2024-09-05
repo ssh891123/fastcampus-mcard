@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { collection, doc, setDoc } from 'firebase/firestore'
 import { auth, store } from '@remote/firebase'
 import { FormValues } from '@models/signup'
-import Form from '@components/singup/Form'
+import Form from '@/components/signup/Form'
 import { COLLECTIONS } from '@constants'
 
 function SignupPage() {
