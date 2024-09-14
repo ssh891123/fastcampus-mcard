@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { FirebaseError } from 'firebase/app'
 
@@ -11,6 +11,8 @@ import { useAlertContext } from '@contexts/AlertContext'
 function SigninPage() {
   const { open } = useAlertContext()
   const navigate = useNavigate()
+  const state = useLocation()
+  console.log('signin', state.state) //로그인 이후에 원래 페이지로 돌아가기 위한 state
 
   const handleSubmit = useCallback(
     async (formValues: FormValues) => {
