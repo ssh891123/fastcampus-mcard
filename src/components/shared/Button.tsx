@@ -1,5 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import Flex from '@shared/Flex'
+import Text from '@shared/Text'
+import Spacing from '@shared/Spacing'
 import {
   ButtonColor,
   ButtonSize,
@@ -16,7 +19,7 @@ interface ButtonProps {
   disabled?: boolean
 }
 
-const Button = styled.button<ButtonProps>(
+const BaseButton = styled.button<ButtonProps>(
   {
     cursor: 'pointer',
     fontWeight: 'bold',
@@ -41,5 +44,42 @@ const Button = styled.button<ButtonProps>(
         `
       : undefined,
 )
+
+function ButtonGroup({
+  title,
+  children,
+}: {
+  title: string
+  children: React.ReactNode
+}) {
+  return (
+    <Flex direction="column">
+      {title != null ? (
+        <>
+          <Text typography="t6" bold={true}>
+            {title}
+          </Text>
+          <Spacing size={8}></Spacing>
+        </>
+      ) : null}
+      <Flex css={buttonGroupStyle}>{children}</Flex>
+    </Flex>
+  )
+}
+
+const buttonGroupStyle = css`
+  flex-wrap: wrap;
+  gap: 10px;
+  & button {
+    flex: 1;
+  }
+`
+
+// ButtonGroup도 확장시키기 위함
+const Button = BaseButton as typeof BaseButton & {
+  ButtonGroup: typeof ButtonGroup
+}
+
+Button.ButtonGroup = ButtonGroup
 
 export default Button
