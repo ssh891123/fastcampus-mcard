@@ -1,38 +1,13 @@
 import { useState } from 'react'
+import Apply from '@components/apply'
 
-import Terms from '@components/apply/Terms'
-import BasicInfo from '@components/apply/BasicInfo'
-
-import CardInfo from '@components/apply/CardInfo'
-
-import { ApplyValues } from '@models/apply'
-
+//완성된 data를 실행하는 component
 function ApplyPage() {
   const [step, setStep] = useState(2)
 
-  const handleTermsChange = (terms: ApplyValues['terms']) => {
-    console.log('handleTermsChange', terms)
-  }
+  const handleSubmit = () => {}
 
-  const handleInfosChange = (
-    infos: Pick<ApplyValues, 'salary' | 'creditScore' | 'payDate'>,
-  ) => {
-    console.log('handleInfosChange', infos)
-  }
-
-  const handleCardInfosChange = (
-    cardInfos: Pick<ApplyValues, 'isMaster' | 'isHipass' | 'isRf'>,
-  ) => {
-    console.log('handleCardInfosChange', cardInfos)
-  }
-
-  return (
-    <div>
-      {step === 0 ? <Terms onNext={handleTermsChange} /> : null}
-      {step === 1 ? <BasicInfo onNext={handleInfosChange} /> : null}
-      {step === 2 ? <CardInfo onNext={handleCardInfosChange} /> : null}
-    </div>
-  )
+  return <Apply step={step} onSubmit={handleSubmit} />
 }
 
 export default ApplyPage
