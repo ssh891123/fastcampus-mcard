@@ -1,13 +1,21 @@
-import { useState } from 'react'
 import Apply from '@components/apply'
+import { ApplyValues } from '@models/apply'
+import useApplyCardMutation from '@components/apply/hooks/useApplyCardMutation'
 
 //완성된 data를 실행하는 component
 function ApplyPage() {
-  const [step, setStep] = useState(2)
+  const { mutate } = useApplyCardMutation({
+    onSuccess: () => {
+      console.log('카드 추가!!!')
+      //값이 추가되었을때 => 폴링 시작
+    },
+    onError: () => {
+      //실패했을때 => 폴링 시작
+      window.history.back()
+    },
+  })
 
-  const handleSubmit = () => {}
-
-  return <Apply step={step} onSubmit={handleSubmit} />
+  return <Apply onSubmit={mutate} />
 }
 
 export default ApplyPage
