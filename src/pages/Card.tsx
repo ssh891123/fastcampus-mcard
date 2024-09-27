@@ -95,6 +95,7 @@ function CardPage() {
 }
 
 function removeHtml(text: string) {
+  if (text == null) return
   let output = ''
 
   for (let i = 0; i < text.length; i++) {
