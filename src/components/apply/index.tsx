@@ -20,7 +20,6 @@ function Apply({ onSubmit }: { onSubmit: (applyValues: ApplyValues) => void }) {
 
   useEffect(() => {
     if (step === 3) {
-      console.log('3 step', applyValues)
       onSubmit({
         ...applyValues,
         appliedAt: new Date(),
