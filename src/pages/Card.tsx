@@ -54,6 +54,7 @@ function CardPage() {
         {benefit.map((text, index) => {
           return (
             <motion.li
+              key={text}
               initial={{ opacity: 0, translateX: -90 }}
               // 화면에 보여질때(예: 스크롤 이벤트) animation 적용 옵션
               // whileInView={{
