@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ScrollToTop from '@shared/ScrollToTop'
 import Navbar from '@shared/Navbar'
@@ -26,7 +27,9 @@ function App() {
           path="/apply/:id"
           element={
             <PrivateRouter>
-              <ApplyPage />
+              <Suspense fallback={<div>ApplyPage...</div>}>
+                <ApplyPage />
+              </Suspense>
             </PrivateRouter>
           }
         />
