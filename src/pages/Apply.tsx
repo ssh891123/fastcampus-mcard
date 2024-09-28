@@ -9,6 +9,7 @@ import { APPLY_STATUS } from '@models/apply'
 import useUser from '@hooks/auth/useUser'
 import useAppliedCard from '@/components/apply/hooks/useAppliedCard'
 import { useAlertContext } from '@contexts/AlertContext'
+import FullPageLoader from '@/components/shared/FullPageLoader'
 
 //완성된 data를 실행하는 component
 function ApplyPage() {
@@ -93,9 +94,8 @@ function ApplyPage() {
     return <div>Data는 있지만, complete가 아닌 경우</div>
   }
 
-  //TODO: 개선필요
   if (readyToPoll || 카드를신청중인가) {
-    return <div>Loading..</div>
+    return <FullPageLoader message="카드를 신청중 입니다" />
   }
 
   return <Apply onSubmit={mutate} />
