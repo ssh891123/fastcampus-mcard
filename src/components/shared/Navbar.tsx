@@ -1,12 +1,12 @@
 import { useCallback } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { css } from '@emotion/react'
-import { signOut } from 'firebase/auth'
+
 import Flex from '@shared/Flex'
 import Button from '@shared/Button'
-import { colors } from '@/styles/colorPalette'
+import MyImage from '@shared/MyImage'
+import { colors } from '@styles/colorPalette'
 import useUser from '@hooks/auth/useUser'
-import { auth } from '@remote/firebase'
 
 function Navbar() {
   const location = useLocation()
@@ -14,12 +14,10 @@ function Navbar() {
     ['/signin', '/signup'].includes(location.pathname) === false
   const user = useUser()
 
-  const handleLogout = useCallback(() => {
-    signOut(auth)
-  }, [])
   const renderButton = useCallback(() => {
     if (user != null) {
-      return <Button onClick={handleLogout}>로그아웃</Button>
+      //TODO 클릭시 user 정보 페이지로 이동 기능 추가
+      return <MyImage />
     }
 
     if (showSignButton) {

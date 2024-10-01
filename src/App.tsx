@@ -10,6 +10,7 @@ import SigninPage from '@pages/Signin'
 import SignupPage from '@pages/Signup'
 import ApplyPage from '@pages/Apply'
 import ApplyDone from '@pages/ApplyDone'
+import MyPage from '@pages/My'
 
 import PrivateRouter from '@components/auth/PrivateRouter'
 
@@ -38,6 +39,14 @@ function App() {
           element={
             <PrivateRouter>
               <ApplyDone />
+            </PrivateRouter>
+          }
+        />
+        <Route
+          path="/my"
+          element={
+            <PrivateRouter>
+              <MyPage />
             </PrivateRouter>
           }
         />
