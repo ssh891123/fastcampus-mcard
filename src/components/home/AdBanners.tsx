@@ -15,7 +15,18 @@ import Text from '@shared/Text'
 import { colors } from '@styles/colorPalette'
 
 function AdBanners() {
-  const { data } = useQuery(['adBanners'], () => getAdBanners())
+  const { data, isLoading } = useQuery(['adBanners'], () => getAdBanners())
+  if (data == null || isLoading) {
+    // data가 로딩 중일때, 공간을 잡아두는 역할로 layoutshift를 방지하기 위함
+    return (
+      <Container>
+        <Flex direction="column" css={bannerContainerStyles}>
+          <Text bold={true}>&nbsp;</Text>
+          <Text typography="t7">&nbsp;</Text>
+        </Flex>
+      </Container>
+    )
+  }
 
   return (
     <Container>
