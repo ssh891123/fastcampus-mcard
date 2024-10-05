@@ -5,6 +5,9 @@ import { ApplyValues, APPLY_STATUS } from '@models/apply'
 import Terms from '@components/apply/Terms'
 import BasicInfo from '@components/apply/BasicInfo'
 import CardInfo from '@components/apply/CardInfo'
+import ProgressBar from '@shared/ProgressBar'
+
+const LAST_STEP = 3
 
 // data를 관리하는 component
 function Apply({ onSubmit }: { onSubmit: (applyValues: ApplyValues) => void }) {
@@ -70,6 +73,8 @@ function Apply({ onSubmit }: { onSubmit: (applyValues: ApplyValues) => void }) {
 
   return (
     <div>
+      <ProgressBar progress={(applyValues.step as number) / LAST_STEP} />
+
       {applyValues.step === 0 ? <Terms onNext={handleTermsChange} /> : null}
       {applyValues.step === 1 ? <BasicInfo onNext={handleInfosChange} /> : null}
       {applyValues.step === 2 ? (
