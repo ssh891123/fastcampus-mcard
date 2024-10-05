@@ -98,20 +98,7 @@ function removeHtml(text: string) {
   if (text == null) return ''
   let output = ''
 
-  for (let i = 0; i < text.length; i++) {
-    if (text[i] === '<') {
-      for (let j = i + 1; j < text.length; j++) {
-        if (text[j] === '>') {
-          i = j
-          break
-        }
-      }
-    } else {
-      output += text[i]
-    }
-  }
-
-  return output
+  return text.replace(/<\/?[^>]+(>|$)/g, '')
 }
 
 function IconCheck() {
