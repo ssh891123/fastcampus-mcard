@@ -9,10 +9,12 @@ import { getCard } from '@remote/card'
 import ListRow from '@shared/ListRow'
 import FixedBottomButton from '@shared/FixedBottomButton'
 import Flex from '@shared/Flex'
+import Spacing from '@shared/Spacing'
 import Text from '@shared/Text'
 
 import { useAlertContext } from '@contexts/AlertContext'
 import useUser from '@hooks/auth/useUser'
+import Review from '@components/card/Review'
 
 function CardPage() {
   const { id = '' } = useParams()
@@ -89,7 +91,17 @@ function CardPage() {
           <Text typography="t7">{removeHtml(promotion.terms)}</Text>
         </Flex>
       ) : null}
-      <FixedBottomButton label="신청하기" onClick={moveToApply} />
+
+      <Spacing size={1000} />
+
+      <Review />
+
+      <Spacing size={100} />
+
+      <FixedBottomButton
+        label="1분만에 신청하고 혜택받기"
+        onClick={moveToApply}
+      />
     </>
   )
 }
@@ -98,20 +110,7 @@ function removeHtml(text: string) {
   if (text == null) return ''
   let output = ''
 
-  for (let i = 0; i < text.length; i++) {
-    if (text[i] === '<') {
-      for (let j = i + 1; j < text.length; j++) {
-        if (text[j] === '>') {
-          i = j
-          break
-        }
-      }
-    } else {
-      output += text[i]
-    }
-  }
-
-  return output
+  return text.replace(/<\/?[^>]+(>|$)/g, '')
 }
 
 function IconCheck() {
